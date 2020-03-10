@@ -11,38 +11,43 @@ var scoreR = 0;
 var ballX = 300;
 var ballY = 200;
 var ballSize = 20;
-var ballXSpeed = 7;
-var ballYSpeed = -3;
+var ballXSpeed = 6;
+var ballYSpeed = -2;
 
-var gameStarted = 0;
+var gameOver = 0;
 
 
 function setup() {
   createCanvas(600, 400);
+  
 }
 
 function draw() {
-  if (gameStarted == 0) {
-    background(200);
+  if (gameOver == 0) {
+    background(130,200,100);
+    fill(255);
+    noStroke();
+    rect(300,0,2,400);
+    
 
     // draw left player
     fill(255,70,70);
-    rect(0, playerL, playerWidth, playerHeight);
+    rect(0, playerL, playerWidth, playerHeight,20);
 
     // draw right player
-    fill(70,170,255);
-    rect(width - playerWidth, playerR, playerWidth, playerHeight);
+    fill(0,100,255);
+    rect(width - playerWidth, playerR, playerWidth, playerHeight,20);
 
     // draw ball
     fill(255);
     ellipse(ballX, ballY, ballSize);
 
 
-      textSize(18);
+      textSize(40);
       fill(255,70,70);
-      text('Red = ' + scoreL, 100, 25);
-      fill(70,170,255);
-      text('Blue = ' + scoreR, 400, 25);
+      text(scoreL, 140, 50);
+      fill(0,100,255);
+      text(scoreR, 440, 50);
 
     /* User Input */
     // 'W' key
@@ -121,23 +126,23 @@ function draw() {
     }
     
     if (scoreL == 7 || scoreR == 7) {
-      gameStarted = 1;
+      gameOver = 1;
       print('gameStarted = 1');
     }
   }
 
 
-    if (gameStarted == 1) {
+    if (gameOver == 1) {
       fill(255);
-      textSize(18);
-      text('game over!', 250, 200);
-      fill(200);
+      textSize(40);
+      text('game over!', 195, 210);
+      fill(130,200,100);
       noStroke();
-      rect(153,9,15,20);
-      rect(455,9, 15, 20);
+      rect(130,10,50,60);
+      rect(440,10,50,60);
       fill(255,70,70);
-      text('Red = ' + scoreL, 100, 25);
-      fill(70,170,255);
-      text('Blue = ' + scoreR, 400, 25);
+      text(scoreL, 140, 50);
+      fill(0,100,255);
+      text(scoreR, 440, 50);
     }
 }
